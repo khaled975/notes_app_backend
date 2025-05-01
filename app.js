@@ -24,7 +24,7 @@ const notesRouter = require("./routes/notesRoute");
 app.use("/", authRouter);
 app.use("/", notesRouter);
 
-app.use("*", (req, res, next) => {
+app.all("*", (req, res, next) => {
   return res.status(404).json({
     status: httpStatusText.ERROR,
     message: "this route is not available",
