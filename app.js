@@ -24,11 +24,10 @@ const notesRouter = require("./routes/notesRoute");
 app.use("/", authRouter);
 app.use("/", notesRouter);
 
-app.all("*", (req, res, next) => {
+app.use((req, res) => {
   return res.status(404).json({
     status: httpStatusText.ERROR,
     message: "this route is not available",
-    code: 404,
   });
 });
 // GLOBAL ERROR HANDLER
